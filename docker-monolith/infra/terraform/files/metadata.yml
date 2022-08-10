@@ -1,0 +1,8 @@
+users:
+  - name: ubuntu
+    groups: sudo
+    shell: /bin/bash
+    sudo:
+      - 'ALL=(ALL) NOPASSWD:ALL'
+    ssh-authorized-keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDrD2ZvkfGHPiYyhv2lKAUdJ/+upoF4MfuJ90yQouY+os/kXs57lobpcjAN6VvxC7C3qgh/3hugPH/oGXqTP4nDPQdy93tD1yXIgIfJ3eQ6DSTBVb+aBlF7F8XBQa0JBvRrrElnKXf5lIVgO462tdfgsFU6wUulQBrcVhB6t4ggJfdlp6CfB0w/9XfYEKoMoayCWttm8BMuXIjg+AAqXTxz+vlT3HcR6mBn1gb6rMN8vVuO8YKQnVuKi3mXdKNZCkj/4gE7+OAlD0n2jJjq9W4MB/CLqD23PdUc4YPtvCAQVPoaQV4dbXj+COifz+NAxIHUWHg73qYs+5qLq/dRm1hqWXwk7tSCEov10iowOG9/LE6w/m8ichv0iyzXim/ENTAEW0FqrXiLi/hlJwwVjpaXT6VeWn396UNvwTcVacDjEW0B9gBH+3K88i7B2GGfKiqMl0MjcQ2lPH7R8FJhG2z7jatctIuifK0EP3xebl3vyLI/ccOJ6GH4BnxsrGFSEuM= ubuntu"
