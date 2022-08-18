@@ -1,5 +1,47 @@
 # virtualb0x_microservices
 virtualb0x microservices repository
+## Выполнено ДЗ 14
+Docker при инициализации контейнера может подключить к нему  одну сеть.
+Дополнительные сети подключаются командой:
+
+> docker network connect <network> <container>
+
+При запуске создаваемые docker-compose контейнеры получают имя в формате <имя проекта>_<имя контейнера>_<инкремент>
+По-умолчанию в качестве <имя проекта> берётся имя директории.
+
+```
+
+Изменить его можно:
+задав переменную окружения `COMPOSE_PROJECT_NAME` в файле `.env` либо экспортировав её
+
+```
+$ export COMPOSE_PROJECT_NAME=reddit
+$ docker-compose up -d
+$ docker ps
+CONTAINER ID   IMAGE                  COMMAND                  CREATED          STATUS          PORTS                                       NAMES
+3e021f50ca1c   username/post:1.0      "python3 post_app.py"    16 seconds ago   Up 14 seconds                                               reddit-post-1
+f76ca39abfc7   username/ui:1.0        "puma --debug -w 2"      16 seconds ago   Up 12 seconds   0.0.0.0:9292->9292/tcp, :::9292->9292/tcp   reddit-ui-1
+3bd27fca2c1d   username/comment:1.0   "puma --debug -w 2"      16 seconds ago   Up 12 seconds                                               reddit-comment-1
+75889dbc4d73   mongo:3.2              "docker-entrypoint.s…"   31 hours ago     Up 14 seconds   27017/tcp                                   reddit-post_db-1
+```
+
+указав его в строке запуска через ключ `-p`
+
+```
+$ docker-compose -p reddit_otus up -d
+$ docker ps
+CONTAINER ID   IMAGE                  COMMAND                   CREATED          STATUS          PORTS                    NAMES
+9597baea0b53   mongo:3.2              "docker-entrypoint.s…"   21  minutes ago   Up 21 minutes   27017/tcp                reddit_otus_post_db_1
+95c2eb7cd78f   saaverdo/post:1.0      "python3 post_app.py"    21  minutes ago   Up 21 minutes                            reddit_post_1
+ded8cc33b8d0   saaverdo/comment:1.0   "puma"                   21  minutes ago   Up 21 minutes                            reddit_otus_comment_1
+d3f8e8e6c178   saaverdo/ui:1.0        "puma"                   21  minutes ago   Up 21 minutes   0.0.0.0:9292->9292/tcp   reddit_otus_ui_1
+```
+
+Кроме того, имя контейнера можно задать директивой `container_name:` - оно в результате будет без префиксов и суффиксов.
+
+
+
+
 ## Выполнено ДЗ 13
 
 1. Скопипастили исходники Dockerfile в целевые файлы
