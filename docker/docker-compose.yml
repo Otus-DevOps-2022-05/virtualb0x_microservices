@@ -44,8 +44,8 @@ services:
     logging:
     driver: "fluentd"
     options:
-    fluentd-address: localhost:24224
-    tag: service.ui
+      fluentd-address: localhost:24224
+      tag: service.ui
 
   post:
     image: ${USER_NAME}/post
