@@ -8,8 +8,6 @@ virtualb0x microservices repository
 Увидели логи
 
 
-
-
 ## Выполнено ДЗ 15
 Все задания без звездочек
 
